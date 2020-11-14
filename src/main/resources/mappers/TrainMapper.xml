@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmm.ssm01.mapper.TrainMapper">
+
+  <select id="list" resultType="train">
+    select *from t_train
+    <where>
+      <if test="tid !=null and tid !='' and tid!=-1">
+        and tid=#{tid}
+      </if>
+      <if test="tnumber !=null and tnumber !=''">
+        and tnumber=#{tnumber}
+      </if>
+      <if test="taddress !=null and taddress !=''">
+        and taddress=#{taddress}
+      </if>
+      <if test="ttime !=null and ttime !=''">
+        and ttime=#{ttime}
+      </if>
+      <if test="ttype !=null and ttype !=''">
+        and ttype=#{ttype}
+      </if>
+    </where>
+  </select>
+<!--  <select id="queryBytnumber" resultType="train">
+    select *from t_train where tnumber=#{tnumber.
+    }
+  </select>-->
+</mapper>

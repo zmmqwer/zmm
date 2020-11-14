@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmm.ssm01.mapper.UserMapper">
+
+  <!--查询登录-->
+  <select id="login" resultType="user">
+    select *from t_user where uname=#{uname} and upwd=#{upwd}
+  </select>
+
+  <!--查询火车票是否被购买-->
+  <select id="buyTrainOK"  resultType="int">
+        select count(*)  from t_order where uid=#{uid} and tid=#{tid}
+    </select>
+  <!--查询已购信息-->
+  <select id="selectBuy" resultType="java.util.Map">
+    select u.uname,t.tnumber from t_user u join t_order o on o.uid=u.uid join t_train t on t.tid=o.tid where u.uid=#{uid}
+  </select>
+
+</mapper>
